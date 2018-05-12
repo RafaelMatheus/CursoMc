@@ -25,7 +25,7 @@ public class Produto implements Serializable {
 	private String nome;
 	private double preco;
 	
-	@JsonBackReference
+	@JsonBackReference /**Ajeitar o erro na chamada da associacao dos produtos.*/	
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",
 		joinColumns = @JoinColumn(name = "PRODUTO_ID"),
