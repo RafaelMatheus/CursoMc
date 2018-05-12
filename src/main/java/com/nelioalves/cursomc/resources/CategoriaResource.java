@@ -21,6 +21,7 @@ public class CategoriaResource {
 	
 	@Autowired
 	private CategoriaService service;
+	
 	@RequestMapping(value="{Id}", method=RequestMethod.GET)	
 	public ResponseEntity<?> listar(@PathVariable Integer Id) {
 		Optional<Categoria> obj = service.buscar(Id);
