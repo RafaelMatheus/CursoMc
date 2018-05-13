@@ -21,8 +21,8 @@ public class ClienteResource {
 	
 	
 	@RequestMapping(value="{Id}", method=RequestMethod.GET)	
-	public ResponseEntity<?> listar(@PathVariable Integer Id) {
-		Optional<Cliente> obj = service.buscarById(Id);
+	public ResponseEntity<?> find(@PathVariable Integer Id) {
+		Optional<Cliente> obj = service.find(Id);
 			
 		
 		return ResponseEntity.ok().body(obj);

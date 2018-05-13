@@ -18,7 +18,7 @@ public class PedidoServico {
 		private PedidoRepositiry repo;
 		
 		
-		public Optional<Pedido> buscar(Integer Id) {
+		public Optional<Pedido> find(Integer Id) {
 		Optional<Pedido> cat = repo.findById(Id);
 		if(cat == null) {
 			throw new ObjectNotFoundException("Objeto não encontrado" + Id + ", tipo" + Pedido.class.getName());
