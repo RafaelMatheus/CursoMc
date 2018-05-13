@@ -1,7 +1,10 @@
 package com.nelioalves.cursomc.domain;
 
+import javax.persistence.Entity;
+
 import com.nelioalves.cursomc.domain.enuns.EstadoPagamento;
 
+@Entity
 public class PagamentoComCartao extends Pagamento {
 	
 	private static final long serialVersionUID = 1L;
@@ -14,9 +17,11 @@ public class PagamentoComCartao extends Pagamento {
 	}
 
 	
-	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido) {
+	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroParcelas) {
+		
 		super(id, estado, pedido);
-		// TODO Auto-generated constructor stub
+		this.numeroParcelas = numeroParcelas;
+		
 	}
 
 
