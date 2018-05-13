@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 public class Estado implements Serializable {
@@ -21,7 +23,8 @@ public class Estado implements Serializable {
 	private Integer Id;
 	private String nome;
 	
-	@OneToMany(mappedBy="estado")	
+	@OneToMany(mappedBy="estado")
+	@JsonBackReference
 	private List<Cidade> cidades = new ArrayList<>();
 
 	public Estado() {
