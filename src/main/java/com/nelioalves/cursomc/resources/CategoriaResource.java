@@ -1,7 +1,9 @@
 package com.nelioalves.cursomc.resources;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.nelioalves.cursomc.domain.Categoria;
+import com.nelioalves.cursomc.dto.CategoriaDto;
 import com.nelioalves.cursomc.services.CategoriaService;
 
 @RestController
@@ -45,5 +48,20 @@ public class CategoriaResource {
 		
 		return ResponseEntity.noContent().build();
 		
+	}
+	
+	@RequestMapping(value = "{Id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer Id) {
+		
+		service.delete(Id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping( method = RequestMethod.GET)
+	public ResponseEntity<List<CategoriaDto>> findAll() {
+		List<Categoria> obj = service.findAll();
+		List<CategoriaDto> listDto = obj.stream().map(obje -> new CategoriaDto(obje)).collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(listDto);
 	}
 }
